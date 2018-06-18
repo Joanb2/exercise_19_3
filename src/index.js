@@ -6,7 +6,9 @@ import { reducer } from './reducer';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import {addComment} from './actions.js';
+import comments from './comments';
+import './actions';
+import {addComment} from './actions';
 
 const store = createStore(reducer);
 

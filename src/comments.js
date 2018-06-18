@@ -45,4 +45,3 @@ export const comments = function comments(state = [], action) {
 			return state;
 	}
 }
-
