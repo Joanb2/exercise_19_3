@@ -2,23 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { reducer } from './reducer';
-import './index.css';
+import { reducers } from './reducer';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import comments from './comments';
-import './actions';
-import {addComment} from './actions';
+import { addComment } from './actions';
 
-const store = createStore(reducer);
+const store = createStore(reducers);
 
 ReactDOM.render(
 	<Provider store={store}>
 		<App />
 	</Provider>,
 	document.getElementById('root'));
-registerServiceWorker();
-
 
 store.dispatch(addComment('first comment'));
 store.dispatch(addComment('second comment'));

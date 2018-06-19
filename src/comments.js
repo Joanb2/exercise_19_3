@@ -4,7 +4,7 @@ import 	{EDIT_COMMENT} from './actions.js';
 import	{THUMB_UP_COMMENT} from './actions.js';
 import	{THUMB_DOWN_COMMENT} from './actions.js';
 
-export const comments = function comments(state = [], action) {
+export default function comments(state = [], action) {
 	switch(action.type) {
 		case ADD_COMMENT: 
 			return [{
@@ -12,7 +12,7 @@ export const comments = function comments(state = [], action) {
 				text: action.text,
 				votes: 0
 			}
-			, ...state.comments];
+			, ...state];
 
 		case REMOVE_COMMENT:
 			return state.comments.filter(comment => comment.id !== action.id);
@@ -23,23 +23,24 @@ export const comments = function comments(state = [], action) {
 					return 
 						text: action.text
 				}
+			return comment;
 			});
 
 		case THUMB_UP_COMMENT:
             return state.map(comment => {
                 if(comment.id === action.id) {
-                return {...comment, votes: comment.votes + 1}
+                	return {...comment, votes: comment.votes + 1}
                 }
             return comment;
             });
 
 		case THUMB_DOWN_COMMENT: 
-			return state.comments.map(comment => {
-				if(comment.id === action.id) {
-					return
-						votes: action.votes - 1
-				}
-			});
+			return state.map(comment => {
+                if(comment.id === action.id) {
+                	return {...comment, votes: comment.votes - 1}
+                }
+            return comment;
+            });
 
 		default:
 			return state;
