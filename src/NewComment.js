@@ -1,5 +1,4 @@
 import React from 'react';
-import {addComment} from './actions';
 
 export class Input extends React.Component {
 	constructor() {
@@ -11,11 +10,12 @@ export class Input extends React.Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		addComment(this.state.text);
+		this.props.addComment(this.state.text);
 		this.setState({text: ''});
 	}
 
 	handleChange(event) {
+		event.preventDefault();
 		this.setState({text: event.target.value});
 	}
 

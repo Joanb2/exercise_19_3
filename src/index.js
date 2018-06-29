@@ -5,8 +5,13 @@ import { createStore } from 'redux';
 import { reducers } from './reducer';
 import App from './App';
 import { addComment } from './actions';
+import DevTools from './DevTools';
 
-const store = createStore(reducers);
+
+const store = createStore(
+	reducers,
+	DevTools.instrument()
+);
 
 ReactDOM.render(
 	<Provider store={store}>
